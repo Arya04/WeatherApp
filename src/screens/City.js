@@ -8,6 +8,8 @@ const City = ({ weatherData }) => {
     const { container, cityName, cityText, countryName, populationWrapper, populationText, riseSetWrapper, riseSetText, rowLayout, imageLayout } = styles
 
     const {name, country, population, sunrise, sunset} = weatherData
+
+    console.log(weatherData)
   return (
     <SafeAreaView style={container}>
       <ImageBackground source={require('../../assets/city.jpg')} style={imageLayout}> 

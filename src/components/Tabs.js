@@ -59,7 +59,7 @@ const Tabs = ({weather}) => {
           )
         }}
         >
-            {() => <City weatherData={weather.City}/>}
+            {() => <City weatherData={weather.city}/>}
         </Tab.Screen>
 
 
