@@ -8,28 +8,61 @@ import { Feather } from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator()
 
-const Tabs = () => {
+const Tabs = ({weather}) => {
   return (
       <Tab.Navigator screenOptions={{
         tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'grey'
+        tabBarInactiveTintColor: 'grey',
+        tabBarStyle: {
+            backgroundColor: 'lightblue',
+        },
+        headerStyle: {
+            backgroundColor: 'lightblue'
+        },
+        headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 25,
+            color: 'tomato'
+        }
       }}
       >
-        <Tab.Screen name={'Current'} component={CurrentWeather} options={{
+        <Tab.Screen 
+        name={'Current'} 
+        options={{
           tabBarIcon: ({ focused }) => (
             <Feather name={'droplet'} size={25} color={focused ? 'tomato' : 'black'}/>
           )
-        }}/>
-        <Tab.Screen name={'Upcoming'} component={UpcomingWeather} options={{
+        }}
+        >
+            {() => <CurrentWeather weatherData={weather.list[0]}/>}
+        </Tab.Screen>
+
+
+        <Tab.Screen 
+        name={'Upcoming'} 
+        options={{
           tabBarIcon: ({ focused }) => (
             <Feather name={'clock'} size={25} color={focused ? 'tomato' : 'black'}/>
           )
-        }}/>
-        <Tab.Screen name={'City'} component={City} options={{
+        }}
+        >
+            {() => <UpcomingWeather weatherData={weather.list}/>}
+        </Tab.Screen>
+
+
+
+        <Tab.Screen 
+        name={'City'} 
+        options={{
           tabBarIcon: ({ focused }) => (
             <Feather name={'home'} size={25} color={focused ? 'tomato' : 'black'}/>
           )
-        }}/>
+        }}
+        >
+            {() => <City weatherData={weather.City}/>}
+        </Tab.Screen>
+
+
       </Tab.Navigator>
   )
 }
